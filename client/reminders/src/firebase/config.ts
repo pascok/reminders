@@ -1,13 +1,14 @@
 import * as firebase from 'firebase';
 import '@firebase/auth';
-import Config from 'react-native-config';
-// import '@firebase/firestore';
+import {SecretConfig} from './secret';
 
 declare const global: {HermesInternal: null | {}};
 
 // Initialize Firebase
 const firebaseConfig = {
-  // TODO Setup env variables
+  apiKey: SecretConfig.API_KEY,
+  projectId: SecretConfig.PROJECT_ID,
+  appId: SecretConfig.APP_ID,
 };
 
 if (!firebase.apps.length) {
