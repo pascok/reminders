@@ -1,38 +1,22 @@
 import React from 'react';
-// import {Text, TouchableOpacity, TextInput} from 'react-native';
-// import {firebase} from './src/firebase/config';
 import 'react-native-gesture-handler';
-import {NavigationContainer, StackActions} from '@react-navigation/native';
+import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import Login from './src/components/Login';
 import Register from './src/components/Register';
 import Home from './src/components/Home';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
 
 const App = () => {
-  // const [email, onChangeEmail] = React.useState('');
-  // const [password, onChangePassword] = React.useState('');
-
-  // const onLoginPress = () => {
-  //   firebase
-  //     .auth()
-  //     .signInWithEmailAndPassword(email, password)
-  //     .then((response) => {
-  //       console.log(response);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // };
-
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Register" component={Register} />
-      </Stack.Navigator>
+      <Tab.Navigator initialRouteName="Home">
+        <Tab.Screen name="Home" component={Home} />
+        <Tab.Screen name="Login" component={Login} />
+        <Tab.Screen name="Register" component={Register} />
+      </Tab.Navigator>
     </NavigationContainer>
   );
 };
