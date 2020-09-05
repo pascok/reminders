@@ -9,13 +9,14 @@
  */
 
 import React from 'react';
-import {Text, TouchableOpacity} from 'react-native';
+import {Text, TouchableOpacity, TextInput} from 'react-native';
 import {firebase} from './src/firebase/config';
 
 const App = () => {
+  const [email, onChangeEmail] = React.useState('');
+  const [password, onChangePassword] = React.useState('');
+
   const onLoginPress = () => {
-    let email = '';
-    let password = '';
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
@@ -29,7 +30,20 @@ const App = () => {
 
   return (
     <>
-      <Text>Hi</Text>
+      <Text>Login</Text>
+      <Text>Email: </Text>
+      <TextInput
+        style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+        onChangeText={(text) => onChangeEmail(text)}
+        value={email}
+      />
+      <Text>Password: </Text>
+      <TextInput
+        onChangeText={(text) => onChangePassword(text)}
+        style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+        value={password}
+        secureTextEntry={true}
+      />
       <TouchableOpacity
         // style={styles.button}
         onPress={() => onLoginPress()}>
