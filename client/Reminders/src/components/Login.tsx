@@ -1,8 +1,9 @@
 import React from 'react';
-import {Text, TouchableOpacity, TextInput} from 'react-native';
+import {Text, Button, TextInput} from 'react-native';
 import {firebase} from '../firebase/config';
 
-const Login = () => {
+//const Login = () => {
+function Login({navigation}) {
   const [email, onChangeEmail] = React.useState('');
   const [password, onChangePassword] = React.useState('');
 
@@ -11,7 +12,7 @@ const Login = () => {
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then((response) => {
-        console.log(response);
+        navigation.navigate('Home');
       })
       .catch((error) => {
         console.log(error);
@@ -33,11 +34,12 @@ const Login = () => {
         value={password}
         secureTextEntry={true}
       />
-      <TouchableOpacity
+      {/* <TouchableOpacity
         // style={styles.button}
         onPress={() => onLoginPress()}>
         <Text>Log in</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
+      <Button title="Get auth" onPress={onLoginPress} />
     </>
   );
 };
